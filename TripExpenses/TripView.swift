@@ -8,19 +8,20 @@ import SwiftUI
 struct TripView: View {
     
     @FocusState private var focusedExpenseID: UUID?
+    @ObservedObject private var logic: TripLogic
     
-    @State private var trip: Trip = .paris
-    
-    @State private var displayEditTripView = false
+    init(_ logic: TripLogic) {
+        self.logic = logic
+    }
     
     var body: some View {
         NavigationView {
             VStack(spacing: 0) {
-                HeaderView(trip: trip)
+                HeaderView(trip: logic.trip)
                 expensesList
             }
             .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle(trip.name)
+            .navigationTitle(logic.trip.name)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     navigationBarTrailingItemContent
@@ -32,19 +33,23 @@ struct TripView: View {
                     keyboardItemContent
                 }
             }
-            .sheet(isPresented: $displayEditTripView) {
-                EditTripView(trip: $trip)
+            .sheet(isPresented: $logic.displayEditTripView) {
+                EditTripView(trip: $logic.trip)
             }
         }
     }
     
     private var expensesList: some View {
         List {
-            ForEach($trip.expenses) { $expense in
+            ForEach($logic.trip.expenses) { $expense in
                 HStack {
-                    TextField("Expense", value: $expense.value, format: .currency(code: trip.currency))
-                        .keyboardType(.decimalPad)
-                        .focused($focusedExpenseID, equals: expense.id)
+                    TextField(
+                        "Expense", 
+                        value: $expense.value, 
+                        format: .currency(code: logic.trip.currency)
+                    )
+                    .keyboardType(.decimalPad)
+                    .focused($focusedExpenseID, equals: expense.id)
                     Spacer()
                     Text(expense.date.formatted())
                         .foregroundColor(.gray)
@@ -57,7 +62,7 @@ struct TripView: View {
     
     private var navigationBarTrailingItemContent: some View {
         Button {
-            displayEditTripView = true
+            logic.displayEditTripView = true
         } label: {
             Label("Edit Trip", systemImage: "pencil")
         }
@@ -66,12 +71,15 @@ struct TripView: View {
     private var bottomBarItemContent: some View {
         HStack {
             Button {
-                trip.expenses.insert(Expense(value: 0, date: Date()), at: 0)
-                focusedExpenseID = trip.expenses.first?.id
+                logic.trip.expenses.insert(Expense(value: 0, date: Date()), at: 0)
+                focusedExpenseID = logic.trip.expenses.first?.id
             } label: {
-                Label("New Expense", systemImage: "plus.circle.fill")
-                    .labelStyle(.titleAndIcon)
-                    .font(.system(.body, design: .rounded).weight(.medium))
+                Label(
+                    "New Expense", 
+                    systemImage: "plus.circle.fill"
+                )
+                .labelStyle(.titleAndIcon)
+                .font(.system(.body, design: .rounded).weight(.medium))
             }
             Spacer()
         }
@@ -93,9 +101,9 @@ struct TripView: View {
 struct TripView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            TripView()
+            TripView(.mock)
                 .previewDevice("iPhone 13")
-            TripView()
+            TripView(.mock)
                 .previewDevice("iPhone SE (3rd generation)")
         }
         

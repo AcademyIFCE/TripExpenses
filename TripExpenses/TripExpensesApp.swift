@@ -9,7 +9,7 @@ import SwiftUI
 struct TripExpensesApp: App {
     var body: some Scene {
         WindowGroup {
-            TripView()
+            TripView(TripLogic(trip: .paris))
         }
     }
 }

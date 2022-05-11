@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0682FEA7282C3F5B00149DDB /* TripLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0682FEA6282C3F5B00149DDB /* TripLogic.swift */; };
 		DC4FC095282AF65000052EAC /* TripExpensesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC4FC094282AF65000052EAC /* TripExpensesApp.swift */; };
 		DC4FC099282AF65200052EAC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC4FC098282AF65200052EAC /* Assets.xcassets */; };
 		DC4FC09C282AF65200052EAC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC4FC09B282AF65200052EAC /* Preview Assets.xcassets */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0682FEA6282C3F5B00149DDB /* TripLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripLogic.swift; sourceTree = "<group>"; };
 		DC4FC091282AF65000052EAC /* TripExpenses.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripExpenses.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC4FC094282AF65000052EAC /* TripExpensesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripExpensesApp.swift; sourceTree = "<group>"; };
 		DC4FC098282AF65200052EAC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -61,6 +63,7 @@
 			children = (
 				DC4FC094282AF65000052EAC /* TripExpensesApp.swift */,
 				DC4FC0A2282AF67200052EAC /* TripView.swift */,
+				0682FEA6282C3F5B00149DDB /* TripLogic.swift */,
 				DC4FC0A8282AF6BB00052EAC /* HeaderView.swift */,
 				DC4FC0AA282AF6D700052EAC /* EditTripView.swift */,
 				DC4FC0A4282AF67F00052EAC /* Trip.swift */,
@@ -149,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0682FEA7282C3F5B00149DDB /* TripLogic.swift in Sources */,
 				DC4FC0AB282AF6D700052EAC /* EditTripView.swift in Sources */,
 				DC4FC0A5282AF67F00052EAC /* Trip.swift in Sources */,
 				DC4FC0A9282AF6BB00052EAC /* HeaderView.swift in Sources */,
